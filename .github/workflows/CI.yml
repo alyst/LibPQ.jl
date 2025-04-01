@@ -69,17 +69,6 @@ jobs:
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-artifacts
-        with:
-          path: ~/.julia/artifacts
-          key: ${{ runner.os }}-${{ matrix.arch }}-test-${{ env.cache-name }}-${{ hashFiles('**/Project.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.arch }}-test-${{ env.cache-name }}-
-            ${{ runner.os }}-${{ matrix.arch }}-test-
-            ${{ runner.os }}-${{ matrix.arch }}-
-            ${{ runner.os }}-
       # Linux
       - name: Install PostgreSQL
         uses: harmon758/postgresql-action@v1
